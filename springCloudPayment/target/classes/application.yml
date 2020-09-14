@@ -1,0 +1,19 @@
+server:  
+ port: 8002
+
+spring: 
+ application: 
+  name: cloud-payment-service
+
+eureka: 
+ instance: 
+  hostname: localhost 
+  #定时发送心跳时间间隔，默认30秒
+  lease-renewal-interval-in-seconds: 5
+  #Server端可清除clint实例的最长未收到心跳间隔时间，默认90秒
+  lease-expiration-duration-in-seconds: 10
+ client:
+  register-with-eureka: true
+  fetch-register: true
+  service-url: 
+   defaultZone: http://${eureka.instance.hostname}:7001/eureka/, http://${eureka.instance.hostname}:7002/eureka/

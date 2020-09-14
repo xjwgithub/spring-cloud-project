@@ -1,0 +1,28 @@
+server:  
+ port: 8001
+
+spring: 
+ application: 
+  name: cloud-order-service
+
+eureka: 
+ instance: 
+  hostname: localhost
+ client:
+  register-with-eureka: true
+  fetch-register: true
+  service-url: 
+   defaultZone: http://${eureka.instance.hostname}:7001/eureka/, http://${eureka.instance.hostname}:7002/eureka/	
+
+
+ribbon:
+#OpenFeign客户端建立连接等待的最长时间 ms 
+ ConnectTimeout: 5000
+#OpenFeign调用方等待响应的最长时间 ms
+ ReadTimeout: 5000
+
+
+
+logging: 
+ level: 
+  service.OrderService: debug

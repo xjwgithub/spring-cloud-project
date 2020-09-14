@@ -1,0 +1,18 @@
+server:  
+ port: 7001
+
+eureka: 
+ instance: 
+  hostname: localhost:7001
+ client:
+  register-with-eureka: false
+  fetch-register: false
+  service-url: 
+   defaultZone: http://localhost:7002/eureka/
+ server: 
+  #自我保护开关,默认是true
+  enable-self-preservation: true
+  #定时清除过期client时间（ms）,默认0ms不定时清除
+  eviction-interval-timer-in-ms: 70000
+  #保护机制生效时间，默认5分钟
+  wait-time-in-ms-when-sync-empty: 5000

@@ -1,0 +1,15 @@
+server:  
+ port: 8010
+
+spring: 
+ application: 
+  name: cloud-payment-service-hystr 
+
+eureka: 
+ instance: 
+  hostname: localhost
+ client:
+  register-with-eureka: true
+  fetch-register: true
+  service-url: 
+   defaultZone: http://${eureka.instance.hostname}:7002/eureka/

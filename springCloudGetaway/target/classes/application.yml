@@ -1,0 +1,29 @@
+server: 
+ port: 9527
+
+eureka:
+ instance:
+  hostname: cloud-gateway-service
+ client: 
+  service-url: 
+   register-with-eureka: true
+   fetch-register: true
+   defaultZone: http://localhost:7002/eureka
+
+spring:
+ application:
+  name: cloud-gateway-service
+ cloud:
+  gateway: 
+   discovery: #配置开启动态路由（Gateway的负载均衡机制）
+    locator: 
+     enabled: true
+   routes: #路由配置
+    - id: payment_route #唯一id定义识别不同的路由规则
+      uri: lb://cloud-payment-service #前缀lb代表使用负载均衡访问节点
+      predicates: 
+       - Path=/getPaymentInfo #根据Path路径筛选节点
+    - id: news_baidu
+      uri: http://news.baidu.com #没有使用负载均衡访问节点，访问指定某个节点
+      predicates: 
+      - Path=/guonei

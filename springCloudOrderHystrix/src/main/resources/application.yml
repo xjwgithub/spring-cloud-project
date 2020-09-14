@@ -1,0 +1,25 @@
+server:  
+ port: 8009
+
+spring: 
+ application: 
+  name: cloud-order-service-hystr 
+
+eureka: 
+ instance: 
+  hostname: localhost
+ client:
+  register-with-eureka: true
+  fetch-register: true
+  service-url: 
+   defaultZone: http://${eureka.instance.hostname}:7002/eureka/
+
+ribbon:
+#OpenFeign客户端建立连接等待的最长时间 ms 
+ ConnectTimeout: 5000
+#OpenFeign调用方等待响应的最长时间 ms
+ ReadTimeout: 5000
+
+feign: 
+ hystrix: 
+  enabled: true
