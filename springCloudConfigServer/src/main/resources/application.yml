@@ -8,11 +8,17 @@ spring:
   config:
    server:
     git:
-     uri: https://github.com/xjwgithub/springCloud-config.git
-     search-paths: 
-       - springCloud-config
+
+     #https方式拉取，需要配置username和password即可
+     uri: https://github.com/xjwgithub/springCloud-config.git 
      username: xjwgithub
      password: xjwgithub12345
+
+     #git仓库下的文件夹路径，非必填。注意如果文件是放在git根目录下，无需配置，否则报错
+     search-paths: 
+       - springCloud-config
+ 
+   #git拉取分支，非必填，如果不填，在client端获取文件的时候可自由访问不同分支
    label: master 
 
 eureka: 
@@ -21,3 +27,16 @@ eureka:
   fetch-register: true
   service-url: 
    defaultZone: http://localhost:7002/eureka/
+
+#暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"  #此处有很多选项可以配置，为了省事 ,直接配置 *
+
+rabbitmq:
+ host: localhost
+ port: 5672
+ username: guest
+ password: guest 

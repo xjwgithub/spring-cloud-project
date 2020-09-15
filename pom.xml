@@ -29,6 +29,7 @@
   <module>springCloudHystrixDashboard</module>
   <module>springCloudGetaway</module>
   <module>springCloudConfigServer</module>
+  <module>springCloudConfigClient</module>
 </modules>
 <dependencyManagement>
 	  <dependencies>
